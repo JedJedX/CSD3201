@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Book Inventory System</title>
+    <script>
+        // เก็บข้อมูลหนังสือใน array
+        let bookList = [];
+        // ฟังก์ชันเพิ่มหนังสือ
+        function addBook() {
+            const title = document.getElementById("title").value.trim();
+            const author = document.getElementById("author").value.trim();
+            const price = parseFloat(document.getElementById("price").value);
+            if (title && author && !isNaN(price)) {
+                // เพิ่มข้อมูลหนังสือลงใน array
+                bookList.push({ title, author, price });
+                displayBooks(); // แสดงรายการหนังสือ
+                clearInputs(); // ล้างช่อง input
+            } else {
+                alert("กรุณากรอกข้อมูลให้ครบถ้วนและราคาต้องเป็นตัวเลข!");
+            }
+        }
+        // ฟังก์ชันแสดงรายการหนังสือ
+        function displayBooks() {
+            const bookTable =
+                document.getElementById("book-list");
+            bookTable.innerHTML = ""; // ล้างข้อมูลในตารางก่อน
+            bookList.forEach((book, index) => {
+                const row = `
+<tr>
+<td>${index + 1}</td>
+<td>${book.title}</td>
+<td>${book.author}</td>
+<td>${book.price.toFixed(2)} บาท</td>
+<td><button onclick="deleteBook(${index})">ลบ</button></td></tr>`;
+                bookTable.innerHTML += row;
+            });
+        }
+        // ฟังก์ชันลบหนังสือ
+        function deleteBook(index) {
+            bookList.splice(index, 1); // ลบข้อมูลหนังสือออกจาก
+            array
+            displayBooks(); // แสดงรายการที่อัปเดต
+        }
+        // ฟังก์ชันล้างข้อมูลในช่อง input
+        function clearInputs() {
+            document.getElementById("title").value = "";
+            document.getElementById("author").value = "";
+            document.getElementById("price").value = "";
+        }
+    </script>
+</head>
+<body>
+    <h1>ระบบจัดการหนังสือ</h1>
+    <h3>เพิ่มหนังสือ</h3>
+    <label for="title">ชื่อหนังสือ:</label>
+    <input type="text" id="title" placeholder="กรอกชื่อหนังสือ"/><br/>
+    <label for="author">ผู้แต่ง:</label>
+    <input type="text" id="author" placeholder="กรอกชื่อผู้แต่ง"/><br/>
+    <label for="price">ราคา (บาท):</label>
+    <input type="number" id="price" placeholder="กรอกราคา" /><br/>
+    <button onclick="addBook()">เพิ่มหนังสือ</button>
+    <h3>รายการหนังสือ</h3>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>ชื่อหนังสือ</th>
+                <th>ผู้แต่ง</th>
+                <th>ราคา</th>
+                <th>การจัดการ</th>
+            </tr>
+        </thead>
+        <tbody id="book-list"></tbody>
+    </table>
+</body>
+
+</html>

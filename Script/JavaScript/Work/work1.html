@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Greeting App</title>
+    <script>
+        // ฟังก์ชันสําหรับแสดงคําทักทาย
+        function greetUser() {
+            // ดึงค่าชื่อจากช่อง input
+            const name =
+                document.getElementById("name-input").value;
+            // ตรวจสอบว่าได้ป้อนชื่อหรือไม่
+            if (name) {
+                // แสดงคําทักทาย
+
+                document.getElementById("greeting-result").innerText = `สวัสดี, ${name}!`;
+            } else {
+                // แสดงข้อความเตือนหากไม่ได้กรอกชื่อ
+                document.getElementById("greeting-result").innerText =
+                    "กรุณากรอกชื่อของคุณ!";
+
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <h1>แอปทักทาย</h1>
+    <p>โปรแกรมเมอร์: เจษฎา ฉิมนอก</p>
+    <label for="name-input">กรอกชื่อของคุณ:</label>
+    <input type="text" id="name-input" placeholder="ชื่อของคุณ" />
+    <button onclick="greetUser()">ทักทาย</button>
+    <p id="greeting-result"></p>
+</body>
+</html>
