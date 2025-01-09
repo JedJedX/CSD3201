@@ -35,11 +35,11 @@ const Docs = () => {
                         <ViewName title="การสร้างฟอร์มที่ส่งข้อมูลกลับไปยังคอมโพเนนต์แม่" />
                         <FormParent />
                     </View> */}
-                    <View style={styles.programCard}>
+                    {/* <View style={styles.programCard}>
                         <ViewName title="แบบค่าเดี่ยว (Primitive Props)" />
                         
                         <GreetingApp />
-                    </View>
+                    </View> */}
                     {/* <View style={styles.programCard}>
                         <ViewName title="แบบกระจายค่า (Spread Props)" />
                         <SpreadPropsApp />
